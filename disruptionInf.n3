@@ -1,0 +1,1158 @@
+# baseURI: http://www.dotrural.ac.uk/irp/uploads/ontologies/disruptionInf
+# imports: http://spinrdf.org/sp
+# imports: http://spinrdf.org/spin
+# imports: http://spinrdf.org/spl
+# imports: http://topbraid.org/functions-smf
+# imports: http://www.dotrural.ac.uk/irp/uploads/ontologies/KIMEntity
+# imports: http://www.dotrural.ac.uk/irp/uploads/ontologies/bottari
+# imports: http://www.dotrural.ac.uk/irp/uploads/ontologies/traffic
+# imports: http://www.w3.org/ns/prov-o#
+
+@prefix : <http://www.dotrural.ac.uk/irp/uploads/ontologies/disruptionInf#> .
+@prefix KIMEntity: <http://www.dotrural.ac.uk/irp/uploads/ontologies/KIMEntity#> .
+@prefix bottari: <http://www.dotrural.ac.uk/irp/uploads/ontologies/bottari#> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sampleTweet: <http://www.dotrural.ac.uk/irp/uploads/ontologies/sampleTweet#> .
+@prefix sioc: <http://rdfs.org/sioc/ns#> .
+@prefix smf: <http://topbraid.org/sparqlmotionfunctions#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix traffic: <http://www.dotrural.ac.uk/irp/uploads/ontologies/traffic#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+spin:Functions
+  spin:constructor [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object traffic:Hazard ;
+            sp:predicate rdf:type ;
+            sp:subject _:b9425 ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object bottari:Tweet ;
+            sp:predicate rdf:type ;
+            sp:subject _:b40568 ;
+          ]
+          [
+            sp:object KIMEntity:KIMAnnotation ;
+            sp:predicate rdf:type ;
+            sp:subject _:b95901 ;
+          ]
+          [
+            sp:object _:b40568 ;
+            sp:predicate oa:hasTarget ;
+            sp:subject _:b95901 ;
+          ]
+          [
+            sp:object traffic:hazard ;
+            sp:predicate oa:hasBody ;
+            sp:subject _:b95901 ;
+          ]
+          [
+            rdf:type sp:Let ;
+            sp:expression [
+                rdf:type smf:generateUUID ;
+              ] ;
+            sp:variable _:b9425 ;
+          ]
+        ) ;
+    ] ;
+.
+bottari:Tweet
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object traffic:Incident ;
+            sp:predicate rdf:type ;
+            sp:subject _:b47093 ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate prov:wasDerivedFrom ;
+            sp:subject _:b47093 ;
+          ]
+          [
+            sp:object _:b20757 ;
+            sp:predicate traffic:incidentType ;
+            sp:subject _:b47093 ;
+          ]
+          [
+            sp:object prov:Activity ;
+            sp:predicate rdf:type ;
+            sp:subject _:b8279 ;
+          ]
+          [
+            sp:object _:b92007 ;
+            sp:predicate prov:used ;
+            sp:subject _:b8279 ;
+          ]
+          [
+            sp:object _:b47093 ;
+            sp:predicate prov:generated ;
+            sp:subject _:b8279 ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object bottari:Tweet ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "tweet"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object KIMEntity:KIMAnnotation ;
+            sp:predicate rdf:type ;
+            sp:subject _:b92007 ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate oa:hasTarget ;
+            sp:subject _:b92007 ;
+          ]
+          [
+            sp:object _:b20757 ;
+            sp:predicate oa:hasBody ;
+            sp:subject _:b92007 ;
+          ]
+          [
+            sp:object traffic:IncidentType ;
+            sp:predicate rdf:type ;
+            sp:subject _:b20757 ;
+          ]
+          [
+            rdf:type sp:Let ;
+            sp:expression [
+                rdf:type smf:buildURI ;
+                sp:arg1 "{?this}_in" ;
+              ] ;
+            sp:variable _:b47093 ;
+          ]
+          [
+            rdf:type sp:Let ;
+            sp:expression [
+                rdf:type smf:buildURI ;
+                sp:arg1 "{?this}_in_act" ;
+              ] ;
+            sp:variable _:b8279 ;
+          ]
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object traffic:Hazard ;
+                  sp:predicate rdf:type ;
+                  sp:subject _:b47031 ;
+                ]
+                [
+                  sp:object spin:_this ;
+                  sp:predicate prov:wasDerivedFrom ;
+                  sp:subject _:b47031 ;
+                ]
+                [
+                  sp:object _:b20757 ;
+                  sp:predicate traffic:incidentType ;
+                  sp:subject _:b47031 ;
+                ]
+                [
+                  sp:object prov:Activity ;
+                  sp:predicate rdf:type ;
+                  sp:subject _:b35178 ;
+                ]
+                [
+                  sp:object _:b92007 ;
+                  sp:predicate prov:used ;
+                  sp:subject _:b35178 ;
+                ]
+                [
+                  sp:object _:b47093 ;
+                  sp:predicate prov:generated ;
+                  sp:subject _:b35178 ;
+                ]
+              ) ;
+          ]
+        ) ;
+    ] ;
+.
+<http://www.dotrural.ac.uk/irp/uploads/ontologies/disruptionInf>
+  rdf:type owl:Ontology ;
+  owl:imports <http://spinrdf.org/sp> ;
+  owl:imports <http://spinrdf.org/spin> ;
+  owl:imports <http://spinrdf.org/spl> ;
+  owl:imports <http://topbraid.org/functions-smf> ;
+  owl:imports <http://www.dotrural.ac.uk/irp/uploads/ontologies/KIMEntity> ;
+  owl:imports <http://www.dotrural.ac.uk/irp/uploads/ontologies/bottari> ;
+  owl:imports <http://www.dotrural.ac.uk/irp/uploads/ontologies/traffic> ;
+  owl:imports <http://www.w3.org/ns/prov-o#> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+traffic:Incident
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object _:b13807 ;
+            sp:predicate <http://www.w3.org/2003/01/geo/wgs84_pos#location> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object prov:Activity ;
+            sp:predicate rdf:type ;
+            sp:subject _:b83456 ;
+          ]
+          [
+            sp:object _:b638 ;
+            sp:predicate prov:used ;
+            sp:subject _:b83456 ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate prov:generated ;
+            sp:subject _:b83456 ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object _:b12220 ;
+            sp:predicate prov:wasDerivedFrom ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object bottari:Tweet ;
+            sp:predicate rdf:type ;
+            sp:subject _:b12220 ;
+          ]
+          [
+            sp:object KIMEntity:KIMAnnotation ;
+            sp:predicate rdf:type ;
+            sp:subject _:b638 ;
+          ]
+          [
+            sp:object _:b12220 ;
+            sp:predicate oa:hasTarget ;
+            sp:subject _:b638 ;
+          ]
+          [
+            sp:object _:b13807 ;
+            sp:predicate oa:hasBody ;
+            sp:subject _:b638 ;
+          ]
+          [
+            sp:object traffic:Location ;
+            sp:predicate rdf:type ;
+            sp:subject _:b13807 ;
+          ]
+          [
+            rdf:type sp:Let ;
+            sp:expression [
+                rdf:type smf:buildURI ;
+                sp:arg1 "{?this}_loc_{?effect}" ;
+              ] ;
+            sp:variable _:b83456 ;
+          ]
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object _:b13807 ;
+                  sp:predicate <http://www.w3.org/2003/01/geo/wgs84_pos#location> ;
+                  sp:subject spin:_this ;
+                ]
+                [
+                  sp:object prov:Activity ;
+                  sp:predicate rdf:type ;
+                  sp:subject _:b82772 ;
+                ]
+                [
+                  sp:object _:b638 ;
+                  sp:predicate prov:used ;
+                  sp:subject _:b82772 ;
+                ]
+                [
+                  sp:object spin:_this ;
+                  sp:predicate prov:generated ;
+                  sp:subject _:b82772 ;
+                ]
+              ) ;
+          ]
+        ) ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object _:b18156 ;
+            sp:predicate traffic:fromLocation ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object _:b34556 ;
+            sp:predicate traffic:toLocation ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object prov:Activity ;
+            sp:predicate rdf:type ;
+            sp:subject _:b77740 ;
+          ]
+          [
+            sp:object _:b78493 ;
+            sp:predicate prov:used ;
+            sp:subject _:b77740 ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate prov:generated ;
+            sp:subject _:b77740 ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object _:b52134 ;
+            sp:predicate prov:wasDerivedFrom ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object bottari:Tweet ;
+            sp:predicate rdf:type ;
+            sp:subject _:b52134 ;
+          ]
+          [
+            sp:object KIMEntity:KIMAnnotation ;
+            sp:predicate rdf:type ;
+            sp:subject _:b78493 ;
+          ]
+          [
+            sp:object _:b52134 ;
+            sp:predicate oa:hasTarget ;
+            sp:subject _:b78493 ;
+          ]
+          [
+            sp:object _:b18156 ;
+            sp:predicate oa:hasBody ;
+            sp:subject _:b78493 ;
+          ]
+          [
+            sp:object _:b49108 ;
+            sp:predicate oa:start ;
+            sp:subject _:b78493 ;
+          ]
+          [
+            sp:object traffic:Location ;
+            sp:predicate rdf:type ;
+            sp:subject _:b18156 ;
+          ]
+          [
+            sp:object KIMEntity:KIMAnnotation ;
+            sp:predicate rdf:type ;
+            sp:subject _:b98796 ;
+          ]
+          [
+            sp:object _:b52134 ;
+            sp:predicate oa:hasTarget ;
+            sp:subject _:b98796 ;
+          ]
+          [
+            sp:object _:b34556 ;
+            sp:predicate oa:hasBody ;
+            sp:subject _:b98796 ;
+          ]
+          [
+            sp:object _:b44268 ;
+            sp:predicate oa:start ;
+            sp:subject _:b98796 ;
+          ]
+          [
+            sp:object traffic:Location ;
+            sp:predicate rdf:type ;
+            sp:subject _:b34556 ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:and ;
+                sp:arg1 [
+                    rdf:type sp:ne ;
+                    sp:arg1 _:b78493 ;
+                    sp:arg2 _:b98796 ;
+                  ] ;
+                sp:arg2 [
+                    rdf:type sp:lt ;
+                    sp:arg1 _:b49108 ;
+                    sp:arg2 _:b44268 ;
+                  ] ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Let ;
+            sp:expression [
+                rdf:type smf:buildURI ;
+                sp:arg1 "{?this}_locations" ;
+              ] ;
+            sp:variable _:b77740 ;
+          ]
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object _:b18156 ;
+                  sp:predicate traffic:fromLocation ;
+                  sp:subject spin:_this ;
+                ]
+                [
+                  sp:object _:b34556 ;
+                  sp:predicate traffic:toLocation ;
+                  sp:subject spin:_this ;
+                ]
+                [
+                  sp:object prov:Activity ;
+                  sp:predicate rdf:type ;
+                  sp:subject _:b94108 ;
+                ]
+                [
+                  sp:object _:b78493 ;
+                  sp:predicate prov:used ;
+                  sp:subject _:b94108 ;
+                ]
+                [
+                  sp:object spin:_this ;
+                  sp:predicate prov:generated ;
+                  sp:subject _:b94108 ;
+                ]
+              ) ;
+          ]
+        ) ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object _:b22372 ;
+            sp:predicate traffic:direction ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object prov:Activity ;
+            sp:predicate rdf:type ;
+            sp:subject _:b31236 ;
+          ]
+          [
+            sp:object _:b22019 ;
+            sp:predicate prov:used ;
+            sp:subject _:b31236 ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate prov:generated ;
+            sp:subject _:b31236 ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object _:b36024 ;
+            sp:predicate prov:wasDerivedFrom ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object bottari:Tweet ;
+            sp:predicate rdf:type ;
+            sp:subject _:b36024 ;
+          ]
+          [
+            sp:object KIMEntity:KIMAnnotation ;
+            sp:predicate rdf:type ;
+            sp:subject _:b22019 ;
+          ]
+          [
+            sp:object _:b36024 ;
+            sp:predicate oa:hasTarget ;
+            sp:subject _:b22019 ;
+          ]
+          [
+            sp:object _:b22372 ;
+            sp:predicate oa:hasBody ;
+            sp:subject _:b22019 ;
+          ]
+          [
+            sp:object traffic:DirectionOfTravel ;
+            sp:predicate rdf:type ;
+            sp:subject _:b22372 ;
+          ]
+          [
+            rdf:type sp:Let ;
+            sp:expression [
+                rdf:type smf:buildURI ;
+                sp:arg1 "{?this}_dot" ;
+              ] ;
+            sp:variable _:b31236 ;
+          ]
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "dir"^^xsd:string ;
+                    ] ;
+                  sp:predicate traffic:direction ;
+                  sp:subject spin:_this ;
+                ]
+                [
+                  sp:object prov:Activity ;
+                  sp:predicate rdf:type ;
+                  sp:subject _:b43772 ;
+                ]
+                [
+                  sp:object _:b22019 ;
+                  sp:predicate prov:used ;
+                  sp:subject _:b43772 ;
+                ]
+                [
+                  sp:object spin:_this ;
+                  sp:predicate prov:generated ;
+                  sp:subject _:b43772 ;
+                ]
+              ) ;
+          ]
+        ) ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object _:b34676 ;
+            sp:predicate traffic:laneImpact ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object prov:Activity ;
+            sp:predicate rdf:type ;
+            sp:subject _:b52515 ;
+          ]
+          [
+            sp:object _:b50885 ;
+            sp:predicate prov:used ;
+            sp:subject _:b52515 ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate prov:generated ;
+            sp:subject _:b52515 ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object _:b6591 ;
+            sp:predicate prov:wasDerivedFrom ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object bottari:Tweet ;
+            sp:predicate rdf:type ;
+            sp:subject _:b6591 ;
+          ]
+          [
+            sp:object KIMEntity:KIMAnnotation ;
+            sp:predicate rdf:type ;
+            sp:subject _:b50885 ;
+          ]
+          [
+            sp:object _:b6591 ;
+            sp:predicate oa:hasTarget ;
+            sp:subject _:b50885 ;
+          ]
+          [
+            sp:object _:b34676 ;
+            sp:predicate oa:hasBody ;
+            sp:subject _:b50885 ;
+          ]
+          [
+            sp:object traffic:LaneCount ;
+            sp:predicate rdf:type ;
+            sp:subject _:b34676 ;
+          ]
+          [
+            rdf:type sp:Let ;
+            sp:expression [
+                rdf:type smf:buildURI ;
+                sp:arg1 "{?this}_lc" ;
+              ] ;
+            sp:variable _:b52515 ;
+          ]
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object _:b34676 ;
+                  sp:predicate traffic:laneImpact ;
+                  sp:subject spin:_this ;
+                ]
+                [
+                  sp:object prov:Activity ;
+                  sp:predicate rdf:type ;
+                  sp:subject _:b21551 ;
+                ]
+                [
+                  sp:object _:b50885 ;
+                  sp:predicate prov:used ;
+                  sp:subject _:b21551 ;
+                ]
+                [
+                  sp:object spin:_this ;
+                  sp:predicate prov:generated ;
+                  sp:subject _:b21551 ;
+                ]
+              ) ;
+          ]
+        ) ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object _:b66823 ;
+            sp:predicate traffic:impact ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object prov:Activity ;
+            sp:predicate rdf:type ;
+            sp:subject _:b6409 ;
+          ]
+          [
+            sp:object _:b41910 ;
+            sp:predicate prov:used ;
+            sp:subject _:b6409 ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate prov:generated ;
+            sp:subject _:b6409 ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object _:b99925 ;
+            sp:predicate prov:wasDerivedFrom ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object bottari:Tweet ;
+            sp:predicate rdf:type ;
+            sp:subject _:b99925 ;
+          ]
+          [
+            sp:object KIMEntity:KIMAnnotation ;
+            sp:predicate rdf:type ;
+            sp:subject _:b41910 ;
+          ]
+          [
+            sp:object _:b99925 ;
+            sp:predicate oa:hasTarget ;
+            sp:subject _:b41910 ;
+          ]
+          [
+            sp:object _:b66823 ;
+            sp:predicate oa:hasBody ;
+            sp:subject _:b41910 ;
+          ]
+          [
+            sp:object traffic:Impact ;
+            sp:predicate rdf:type ;
+            sp:subject _:b66823 ;
+          ]
+          [
+            rdf:type sp:Let ;
+            sp:expression [
+                rdf:type smf:buildURI ;
+                sp:arg1 "{?this}_impact" ;
+              ] ;
+            sp:variable _:b6409 ;
+          ]
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object _:b66823 ;
+                  sp:predicate traffic:impact ;
+                  sp:subject spin:_this ;
+                ]
+                [
+                  sp:object prov:Activity ;
+                  sp:predicate rdf:type ;
+                  sp:subject _:b94236 ;
+                ]
+                [
+                  sp:object _:b41910 ;
+                  sp:predicate prov:used ;
+                  sp:subject _:b94236 ;
+                ]
+                [
+                  sp:object spin:_this ;
+                  sp:predicate prov:generated ;
+                  sp:subject _:b94236 ;
+                ]
+              ) ;
+          ]
+        ) ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object _:b76733 ;
+            sp:predicate traffic:durationQualifier ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object prov:Activity ;
+            sp:predicate rdf:type ;
+            sp:subject _:b29107 ;
+          ]
+          [
+            sp:object _:b30028 ;
+            sp:predicate prov:used ;
+            sp:subject _:b29107 ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate prov:generated ;
+            sp:subject _:b29107 ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object _:b71311 ;
+            sp:predicate prov:wasDerivedFrom ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object bottari:Tweet ;
+            sp:predicate rdf:type ;
+            sp:subject _:b71311 ;
+          ]
+          [
+            sp:object KIMEntity:KIMAnnotation ;
+            sp:predicate rdf:type ;
+            sp:subject _:b30028 ;
+          ]
+          [
+            sp:object _:b71311 ;
+            sp:predicate oa:hasTarget ;
+            sp:subject _:b30028 ;
+          ]
+          [
+            sp:object _:b76733 ;
+            sp:predicate oa:hasBody ;
+            sp:subject _:b30028 ;
+          ]
+          [
+            sp:object traffic:DurationQualifier ;
+            sp:predicate rdf:type ;
+            sp:subject _:b76733 ;
+          ]
+          [
+            rdf:type sp:Let ;
+            sp:expression [
+                rdf:type smf:buildURI ;
+                sp:arg1 "{?this}_dq" ;
+              ] ;
+            sp:variable _:b29107 ;
+          ]
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object _:b76733 ;
+                  sp:predicate traffic:durationQualifier ;
+                  sp:subject spin:_this ;
+                ]
+                [
+                  sp:object prov:Activity ;
+                  sp:predicate rdf:type ;
+                  sp:subject _:b99174 ;
+                ]
+                [
+                  sp:object _:b30028 ;
+                  sp:predicate prov:used ;
+                  sp:subject _:b99174 ;
+                ]
+                [
+                  sp:object spin:_this ;
+                  sp:predicate prov:generated ;
+                  sp:subject _:b99174 ;
+                ]
+              ) ;
+          ]
+        ) ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object _:b97623 ;
+            sp:predicate traffic:status ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object prov:Activity ;
+            sp:predicate rdf:type ;
+            sp:subject _:b7754 ;
+          ]
+          [
+            sp:object _:b93356 ;
+            sp:predicate prov:used ;
+            sp:subject _:b7754 ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate prov:generated ;
+            sp:subject _:b7754 ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object _:b91574 ;
+            sp:predicate prov:wasDerivedFrom ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object bottari:Tweet ;
+            sp:predicate rdf:type ;
+            sp:subject _:b91574 ;
+          ]
+          [
+            sp:object KIMEntity:KIMAnnotation ;
+            sp:predicate rdf:type ;
+            sp:subject _:b93356 ;
+          ]
+          [
+            sp:object _:b91574 ;
+            sp:predicate oa:hasTarget ;
+            sp:subject _:b93356 ;
+          ]
+          [
+            sp:object _:b97623 ;
+            sp:predicate oa:hasBody ;
+            sp:subject _:b93356 ;
+          ]
+          [
+            sp:object traffic:Status ;
+            sp:predicate rdf:type ;
+            sp:subject _:b97623 ;
+          ]
+          [
+            rdf:type sp:Let ;
+            sp:expression [
+                rdf:type smf:buildURI ;
+                sp:arg1 "{?this}_status" ;
+              ] ;
+            sp:variable _:b7754 ;
+          ]
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object _:b97623 ;
+                  sp:predicate prov:wasDerivedFrom ;
+                  sp:subject spin:_this ;
+                ]
+                [
+                  sp:object prov:Activity ;
+                  sp:predicate rdf:type ;
+                  sp:subject _:b78726 ;
+                ]
+                [
+                  sp:object _:b93356 ;
+                  sp:predicate prov:used ;
+                  sp:subject _:b78726 ;
+                ]
+                [
+                  sp:object spin:_this ;
+                  sp:predicate prov:generated ;
+                  sp:subject _:b78726 ;
+                ]
+              ) ;
+          ]
+        ) ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "area"^^xsd:string ;
+              ] ;
+            sp:predicate <http://transport.data.gov.uk/def/naptan/nptgLocality> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object prov:Activity ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "a"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ann"^^xsd:string ;
+              ] ;
+            sp:predicate prov:used ;
+            sp:subject [
+                sp:varName "a"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate prov:generated ;
+            sp:subject [
+                sp:varName "a"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "tweet"^^xsd:string ;
+              ] ;
+            sp:predicate prov:wasDerivedFrom ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object bottari:Tweet ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "tweet"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object KIMEntity:KIMAnnotation ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ann"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "tweet"^^xsd:string ;
+              ] ;
+            sp:predicate oa:hasTarget ;
+            sp:subject [
+                sp:varName "ann"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "area"^^xsd:string ;
+              ] ;
+            sp:predicate oa:hasBody ;
+            sp:subject [
+                sp:varName "ann"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object <http://transport.data.gov.uk/def/naptan/NptgLocality> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "effect"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type smf:buildURI ;
+                sp:arg1 "{?this}_locality}" ;
+              ] ;
+            sp:variable [
+                sp:varName "a"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "area"^^xsd:string ;
+                    ] ;
+                  sp:predicate <http://transport.data.gov.uk/def/naptan/nptgLocality> ;
+                  sp:subject spin:_this ;
+                ]
+                [
+                  sp:object prov:Activity ;
+                  sp:predicate rdf:type ;
+                  sp:subject [
+                      sp:varName "a2"^^xsd:string ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "ann"^^xsd:string ;
+                    ] ;
+                  sp:predicate prov:used ;
+                  sp:subject [
+                      sp:varName "a2"^^xsd:string ;
+                    ] ;
+                ]
+                [
+                  sp:object spin:_this ;
+                  sp:predicate prov:generated ;
+                  sp:subject [
+                      sp:varName "a2"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+    ] ;
+.
+_:b638
+  sp:varName "ann"^^xsd:string ;
+.
+_:b6409
+  sp:varName "a"^^xsd:string ;
+.
+_:b6591
+  sp:varName "tweet"^^xsd:string ;
+.
+_:b7754
+  sp:varName "a"^^xsd:string ;
+.
+_:b8279
+  sp:varName "a"^^xsd:string ;
+.
+_:b9425
+  sp:varName "uri"^^xsd:string ;
+.
+_:b12220
+  sp:varName "tweet"^^xsd:string ;
+.
+_:b13807
+  sp:varName "effect"^^xsd:string ;
+.
+_:b18156
+  sp:varName "loc1"^^xsd:string ;
+.
+_:b20757
+  sp:varName "iType"^^xsd:string ;
+.
+_:b21551
+  sp:varName "a2"^^xsd:string ;
+.
+_:b22019
+  sp:varName "ann"^^xsd:string ;
+.
+_:b22372
+  sp:varName "heading"^^xsd:string ;
+.
+_:b29107
+  sp:varName "a"^^xsd:string ;
+.
+_:b30028
+  sp:varName "ann"^^xsd:string ;
+.
+_:b31236
+  sp:varName "a"^^xsd:string ;
+.
+_:b34556
+  sp:varName "loc2"^^xsd:string ;
+.
+_:b34676
+  sp:varName "effect"^^xsd:string ;
+.
+_:b35178
+  sp:varName "a2"^^xsd:string ;
+.
+_:b36024
+  sp:varName "tweet"^^xsd:string ;
+.
+_:b40568
+  sp:varName "tweet"^^xsd:string ;
+.
+_:b41910
+  sp:varName "ann"^^xsd:string ;
+.
+_:b43772
+  sp:varName "a2"^^xsd:string ;
+.
+_:b44268
+  sp:varName "ann2Start"^^xsd:string ;
+.
+_:b47031
+  sp:varName "h"^^xsd:string ;
+.
+_:b47093
+  sp:varName "d"^^xsd:string ;
+.
+_:b49108
+  sp:varName "annStart"^^xsd:string ;
+.
+_:b50885
+  sp:varName "ann"^^xsd:string ;
+.
+_:b52134
+  sp:varName "tweet"^^xsd:string ;
+.
+_:b52515
+  sp:varName "a"^^xsd:string ;
+.
+_:b66823
+  sp:varName "effect"^^xsd:string ;
+.
+_:b71311
+  sp:varName "tweet"^^xsd:string ;
+.
+_:b76733
+  sp:varName "effect"^^xsd:string ;
+.
+_:b77740
+  sp:varName "a"^^xsd:string ;
+.
+_:b78493
+  sp:varName "ann"^^xsd:string ;
+.
+_:b78726
+  sp:varName "a2"^^xsd:string ;
+.
+_:b82772
+  sp:varName "a2"^^xsd:string ;
+.
+_:b83456
+  sp:varName "a"^^xsd:string ;
+.
+_:b91574
+  sp:varName "tweet"^^xsd:string ;
+.
+_:b92007
+  sp:varName "ann"^^xsd:string ;
+.
+_:b93356
+  sp:varName "ann"^^xsd:string ;
+.
+_:b94108
+  sp:varName "a2"^^xsd:string ;
+.
+_:b94236
+  sp:varName "a2"^^xsd:string ;
+.
+_:b95901
+  sp:varName "ann"^^xsd:string ;
+.
+_:b97623
+  sp:varName "effect"^^xsd:string ;
+.
+_:b98796
+  sp:varName "ann2"^^xsd:string ;
+.
+_:b99174
+  sp:varName "a2"^^xsd:string ;
+.
+_:b99925
+  sp:varName "tweet"^^xsd:string ;
+.

@@ -1,0 +1,185 @@
+# baseURI: http://www.dotrural.ac.uk/irp/uploads/ontologies/kimtraffic
+# imports: http://proton.semanticweb.org/2006/05/protons
+# imports: http://proton.semanticweb.org/2006/05/protont
+# imports: http://www.dotrural.ac.uk/irp/uploads/ontologies/traffic
+
+@prefix : <http://www.dotrural.ac.uk/irp/uploads/ontologies/kimtraffic#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix protons: <http://proton.semanticweb.org/2006/05/protons#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix traffic: <http://www.dotrural.ac.uk/irp/uploads/ontologies/traffic#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.dotrural.ac.uk/irp/uploads/ontologies/kimtraffic>
+  rdf:type owl:Ontology ;
+  rdfs:comment "Extends the traffic ontology with axioms required by KIM"^^xsd:string ;
+  owl:imports <http://proton.semanticweb.org/2006/05/protons> ;
+  owl:imports <http://proton.semanticweb.org/2006/05/protont> ;
+  owl:imports <http://www.dotrural.ac.uk/irp/uploads/ontologies/traffic> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+:AllLanes_1
+  rdf:type protons:Alias ;
+  rdfs:label "All Lanes"^^xsd:string ;
+.
+:Cleared_1
+  rdf:type protons:Alias ;
+  rdfs:label "Cleared"^^xsd:string ;
+  rdfs:label "Has been cleared"^^xsd:string ;
+.
+:Closed_1
+  rdf:type protons:Alias ;
+  rdfs:label "Closed"^^xsd:string ;
+.
+:Eastbound_1
+  rdf:type protons:Alias ;
+  rdfs:label "Eastbound"^^xsd:string ;
+.
+:ForMoreThan_1
+  rdf:type protons:Alias ;
+  rdfs:label "For more than"^^xsd:string ;
+.
+:ForUpTo_1
+  rdf:type protons:Alias ;
+  rdfs:label "For up to"^^xsd:string ;
+.
+:FourLanes_1
+  rdf:type protons:Alias ;
+  rdfs:label "4 lanes"^^xsd:string ;
+.
+:Indefinitely_1
+  rdf:type protons:Alias ;
+  rdfs:label "Indefinitely"^^xsd:string ;
+.
+:Northbound_1
+  rdf:type protons:Alias ;
+  rdfs:label "Northbound"^^xsd:string ;
+.
+:OneLaneClosed_1
+  rdf:type protons:Alias ;
+  rdfs:label "1 lane"^^xsd:string ;
+.
+:Restricted_1
+  rdf:type protons:Alias ;
+  rdfs:label "Restricted"^^xsd:string ;
+.
+:Southbound_1
+  rdf:type protons:Alias ;
+  rdfs:label "Southbound"^^xsd:string ;
+.
+:ThreeLanes_1
+  rdf:type protons:Alias ;
+  rdfs:label "3 lanes"^^xsd:string ;
+.
+:TwoLanes_1
+  rdf:type protons:Alias ;
+  rdfs:label "2 lanes"^^xsd:string ;
+.
+:Westbound_1
+  rdf:type protons:Alias ;
+  rdfs:label "Westbound"^^xsd:string ;
+.
+:roadworks_1
+  rdf:type protons:Alias ;
+  rdfs:label "roadworks"^^xsd:string ;
+.
+:weather_1
+  rdf:type protons:Alias ;
+  rdfs:label "weather"^^xsd:string ;
+.
+traffic:AllLanes
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+  protons:hasMainAlias :AllLanes_1 ;
+.
+traffic:Cleared
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+  protons:hasMainAlias :Cleared_1 ;
+.
+traffic:Closed
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+  protons:hasMainAlias :Closed_1 ;
+.
+traffic:DirectionOfTravel
+  rdfs:subClassOf protons:Entity ;
+.
+traffic:Duration
+  rdfs:subClassOf protons:Entity ;
+.
+traffic:Eastbound
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+  protons:hasMainAlias :Eastbound_1 ;
+.
+traffic:Effect
+  rdfs:subClassOf protons:Entity ;
+.
+traffic:ForMoreThan
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+  protons:hasMainAlias :ForMoreThan_1 ;
+.
+traffic:ForUpTo
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+  protons:hasMainAlias :ForUpTo_1 ;
+.
+traffic:FourLanes
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+  protons:hasMainAlias :FourLanes_1 ;
+.
+traffic:Incident
+  rdfs:subClassOf protons:Entity ;
+.
+traffic:Indefinitely
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+  protons:hasMainAlias :Indefinitely_1 ;
+.
+traffic:Northbound
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+  protons:hasMainAlias :Northbound_1 ;
+.
+traffic:OneLane
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+  protons:hasMainAlias :OneLaneClosed_1 ;
+.
+traffic:Restricted
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+  protons:hasMainAlias :Restricted_1 ;
+.
+traffic:Southbound
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+  protons:hasMainAlias :Southbound_1 ;
+.
+traffic:ThreeLanes
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+  protons:hasMainAlias :ThreeLanes_1 ;
+.
+traffic:TwoLanes
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+  protons:hasMainAlias :TwoLanes_1 ;
+.
+traffic:Westbound
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+  protons:hasMainAlias :Westbound_1 ;
+.
+traffic:accident
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+.
+traffic:breakdown
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+.
+traffic:fluidSPill
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+.
+traffic:hazard
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+.
+traffic:highWinds
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+.
+traffic:roadworks
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+  protons:hasMainAlias :roadworks_1 ;
+.
+traffic:weather
+  protons:generatedBy <http://www.ontotext.com/kim/2006/05/wkb#Gazetteer> ;
+  protons:hasMainAlias :weather_1 ;
+.

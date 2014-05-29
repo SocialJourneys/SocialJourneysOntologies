@@ -1,0 +1,275 @@
+# baseURI: http://www.dotrural.ac.uk/irp/uploads/ontologies/traffic
+# imports: file:/Users/david/TBCFreeWorkspace/IRP2/naptan.ttl
+# imports: http://proton.semanticweb.org/2006/05/protons
+
+@prefix : <http://www.dotrural.ac.uk/irp/uploads/ontologies/traffic#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://transport.data.gov.uk/def/naptan/AdministrativeArea>
+  rdfs:subClassOf :Location ;
+  rdfs:subClassOf rdfs:Resource ;
+.
+<http://transport.data.gov.uk/def/naptan/NptgDistrict>
+  rdfs:subClassOf :Location ;
+.
+<http://transport.data.gov.uk/def/naptan/NptgLocality>
+  rdfs:subClassOf :Location ;
+.
+<http://www.dotrural.ac.uk/irp/uploads/ontologies/traffic>
+  rdf:type owl:Ontology ;
+  rdfs:comment "Describes traffic incidents produced by TrafficScotland"^^xsd:string ;
+  owl:imports <file:/Users/david/TBCFreeWorkspace/IRP2/naptan.ttl> ;
+  owl:imports <http://proton.semanticweb.org/2006/05/protons> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+:Accident
+  rdf:type owl:Class ;
+  rdfs:label "Accident"^^xsd:string ;
+  rdfs:subClassOf :Incident ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue :accident ;
+      owl:onProperty :incidentType ;
+    ] ;
+.
+:AllLanes
+  rdf:type :LaneCount ;
+  rdfs:label "All lanes"^^xsd:string ;
+.
+:Blocked
+  rdf:type :Impact ;
+  rdfs:label "Blocked"^^xsd:string ;
+.
+:Breakdown
+  rdf:type owl:Class ;
+  rdfs:label "Breakdown"^^xsd:string ;
+  rdfs:subClassOf :Incident ;
+.
+:Cleared
+  rdf:type :Status ;
+  rdfs:label "Cleared"^^xsd:string ;
+  rdfs:label "Has been cleared"^^xsd:string ;
+.
+:Closed
+  rdf:type :Impact ;
+  rdfs:label "Closed"^^xsd:string ;
+.
+:Cowdenbeath
+  rdf:type :Location ;
+  rdfs:label "Cowdenbeath" ;
+.
+:DirectionOfTravel
+  rdf:type owl:Class ;
+  rdfs:label "Direction of travel"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:DurationQualifier
+  rdf:type owl:Class ;
+  rdfs:label "Duration"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:Eastbound
+  rdf:type :DirectionOfTravel ;
+  rdfs:label "E/B"^^xsd:string ;
+  rdfs:label "Eastbound"^^xsd:string ;
+.
+:Effect
+  rdf:type owl:Class ;
+  rdfs:label "Effect"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:FluidSpill
+  rdf:type owl:Class ;
+  rdfs:label "Fluid spill"^^xsd:string ;
+  rdfs:subClassOf :Incident ;
+.
+:ForMoreThan
+  rdf:type :DurationQualifier ;
+  rdfs:label "For more than"^^xsd:string ;
+.
+:ForUpTo
+  rdf:type :DurationQualifier ;
+  rdfs:label "For up to"^^xsd:string ;
+.
+:FourLanes
+  rdf:type :LaneCount ;
+  rdfs:label "4 lanes"^^xsd:string ;
+.
+:Hazard
+  rdf:type owl:Class ;
+  rdfs:label "Hazard"^^xsd:string ;
+  rdfs:subClassOf :Incident ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue :hazard ;
+      owl:onProperty :incidentType ;
+    ] ;
+.
+:HighWinds
+  rdf:type owl:Class ;
+  rdfs:label "High winds"^^xsd:string ;
+  rdfs:subClassOf :Weather ;
+.
+:Impact
+  rdf:type owl:Class ;
+  rdfs:label "Impact"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:Incident
+  rdf:type owl:Class ;
+  rdfs:label "Incident"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:IncidentType
+  rdf:type owl:Class ;
+  rdfs:label "Incident type"^^xsd:string ;
+  rdfs:subClassOf <http://proton.semanticweb.org/2006/05/protons#Entity> ;
+.
+:Indefinitely
+  rdf:type :DurationQualifier ;
+  rdfs:label "Indefinitely"^^xsd:string ;
+.
+:LaneCount
+  rdf:type owl:Class ;
+  rdfs:label "Lane count"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:Location
+  rdf:type owl:Class ;
+  rdfs:subClassOf owl:Thing ;
+.
+:Lochgelly
+  rdf:type :Location ;
+  rdfs:label "Lochgelly" ;
+.
+:Northbound
+  rdf:type :DirectionOfTravel ;
+  rdfs:label "N/B"^^xsd:string ;
+  rdfs:label "Northbound"^^xsd:string ;
+.
+:OneLane
+  rdf:type :LaneCount ;
+  rdfs:label "1 lane"^^xsd:string ;
+.
+:Restricted
+  rdf:type :Impact ;
+  rdfs:label "Restricted"^^xsd:string ;
+.
+:Roadworks
+  rdf:type owl:Class ;
+  rdfs:label "Roadworks"^^xsd:string ;
+  rdfs:subClassOf :Incident ;
+.
+:Southbound
+  rdf:type :DirectionOfTravel ;
+  rdfs:label "S/B"^^xsd:string ;
+  rdfs:label "Southbound"^^xsd:string ;
+.
+:Status
+  rdf:type owl:Class ;
+  rdfs:subClassOf owl:Thing ;
+.
+:SurfaceWater
+  rdf:type owl:Class ;
+  rdfs:label "Surface water"^^xsd:string ;
+  rdfs:subClassOf :Weather ;
+.
+:ThreeLanes
+  rdf:type :LaneCount ;
+  rdfs:label "3 lanes"^^xsd:string ;
+.
+:TwoLanes
+  rdf:type :LaneCount ;
+  rdfs:label "2 lanes"^^xsd:string ;
+.
+:Weather
+  rdf:type owl:Class ;
+  rdfs:label "Weather"^^xsd:string ;
+  rdfs:subClassOf :Incident ;
+.
+:Westbound
+  rdf:type :DirectionOfTravel ;
+  rdfs:label "W/B"^^xsd:string ;
+  rdfs:label "Westbound"^^xsd:string ;
+.
+:accident
+  rdf:type :IncidentType ;
+  rdfs:label "accident"^^xsd:string ;
+.
+:animals
+  rdf:type :IncidentType ;
+  rdfs:label "animals" ;
+.
+:area
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "area"^^xsd:string ;
+.
+:breakdown
+  rdf:type :IncidentType ;
+  rdfs:label "breakdown"^^xsd:string ;
+.
+:direction
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "direction"^^xsd:string ;
+.
+:durationQualifier
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "duration qualifier"^^xsd:string ;
+.
+:effect
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has effect"^^xsd:string ;
+.
+:fluidSPill
+  rdf:type :IncidentType ;
+  rdfs:label "fluid SPill"^^xsd:string ;
+.
+:fromLocation
+  rdf:type owl:ObjectProperty ;
+.
+:hazard
+  rdf:type :IncidentType ;
+  rdfs:label "hazard"^^xsd:string ;
+.
+:highWinds
+  rdf:type :IncidentType ;
+  rdfs:label "high winds"^^xsd:string ;
+.
+:impact
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "impact"^^xsd:string ;
+.
+:incidentType
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "Incident type"^^xsd:string ;
+.
+:laneImpact
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "lane impact"^^xsd:string ;
+.
+:location
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "location"^^xsd:string ;
+.
+:road
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "road"^^xsd:string ;
+.
+:roadworks
+  rdf:type :IncidentType ;
+  rdfs:label "roadworks"^^xsd:string ;
+.
+:status
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "status"^^xsd:string ;
+.
+:toLocation
+  rdf:type owl:ObjectProperty ;
+.
+:weather
+  rdf:type :IncidentType ;
+  rdfs:label "weather"^^xsd:string ;
+.

@@ -1,0 +1,160 @@
+# Saved by TopBraid on Tue Apr 22 17:38:11 IST 2014
+# baseURI: http://www.dotrural.ac.uk/irp/uploads/ontologies/sampleTweet
+# imports: http://www.w3.org/ns/prov-o
+# imports: http://www.dotrural.ac.uk/irp/uploads/ontologies/disruptionInf
+# imports: http://www.dotrural.ac.uk/irp/uploads/ontologies/KIMEntity
+# imports: http://www.w3.org/ns/oa
+# imports: http://purl.org/dc/elements/1.1/
+# imports: http://www.w3.org/2004/02/skos/core
+# imports: http://proton.semanticweb.org/2006/05/protons
+# imports: http://www.dotrural.ac.uk/irp/uploads/ontologies/bottari
+# imports: http://purl.org/dc/terms/
+# imports: http://www.w3.org/ns/prov#
+# imports: http://www.dotrural.ac.uk/irp/uploads/ontologies/traffic
+
+@prefix :        <http://www.dotrural.ac.uk/irp/uploads/ontologies/sampleTweet#> .
+@prefix KIMEntity:  <http://www.dotrural.ac.uk/irp/uploads/ontologies/KIMEntity#> .
+@prefix bottari:  <http://www.dotrural.ac.uk/irp/uploads/ontologies/bottari#> .
+@prefix disruptionInf:  <http://www.dotrural.ac.uk/irp/uploads/ontologies/disruptionInf#> .
+@prefix oa:      <http://www.w3.org/ns/oa#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix prov-dc:  <http://www.w3.org/ns/prov-dc#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sioc:    <http://rdfs.org/sioc/ns#> .
+@prefix traffic:  <http://www.dotrural.ac.uk/irp/uploads/ontologies/traffic#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.dotrural.ac.uk/irp/uploads/ontologies/sampleTweet>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.w3.org/ns/prov-o> , prov: , <http://www.w3.org/ns/oa> , <http://www.dotrural.ac.uk/irp/uploads/ontologies/bottari> , <http://www.dotrural.ac.uk/irp/uploads/ontologies/traffic> , <http://www.dotrural.ac.uk/irp/uploads/ontologies/disruptionInf> , <http://proton.semanticweb.org/2006/05/protons> , <http://www.dotrural.ac.uk/irp/uploads/ontologies/KIMEntity> , <http://www.w3.org/2004/02/skos/core> , <http://purl.org/dc/terms/> , <http://purl.org/dc/elements/1.1/> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+:KIMAnnotation_1
+      rdf:type prov:Entity , KIMEntity:KIMAnnotation ;
+      rdfs:label "KIMAnnotation 1"^^xsd:string ;
+      KIMEntity:originalName
+              "Westbound"^^xsd:string ;
+      oa:end  "73"^^xsd:nonNegativeInteger ;
+      oa:hasBody traffic:Westbound ;
+      oa:hasTarget :TSTweet1 ;
+      oa:start "64"^^xsd:nonNegativeInteger .
+
+:KIMAnnotation_2
+      rdf:type prov:Entity , KIMEntity:KIMAnnotation ;
+      rdfs:label "KIMAnnotation 2"^^xsd:string ;
+      KIMEntity:originalName
+              "2 lanes"^^xsd:string ;
+      oa:end  "52"^^xsd:nonNegativeInteger ;
+      oa:hasBody traffic:TwoLanes ;
+      oa:hasTarget :TSTweet1 ;
+      oa:start "45"^^xsd:nonNegativeInteger .
+
+:KIMAnnotation_3
+      rdf:type prov:Entity , KIMEntity:KIMAnnotation ;
+      rdfs:label "KIMAnnotation 3"^^xsd:string ;
+      KIMEntity:originalName
+              "Lockerbie"^^xsd:string ;
+      oa:end  "44"^^xsd:nonNegativeInteger ;
+      oa:hasBody <http://irp.sncs.abdn.ac.uk/item/nptg/locality/ES002459> ;
+      oa:hasTarget :TSTweet1 ;
+      oa:start "35"^^xsd:nonNegativeInteger .
+
+:KIMAnnotation_4
+      rdf:type prov:Entity , KIMEntity:KIMAnnotation ;
+      rdfs:label "KIMAnnotation 4"^^xsd:string ;
+      KIMEntity:originalName
+              "Hazard"^^xsd:string ;
+      oa:end  "33"^^xsd:nonNegativeInteger ;
+      oa:hasBody traffic:hazard ;
+      oa:hasTarget :TSTweet1 ;
+      oa:start "27"^^xsd:nonNegativeInteger .
+
+:KIMAnnotation_5
+      rdf:type prov:Entity , KIMEntity:KIMAnnotation ;
+      rdfs:label "KIMAnnotation 5"^^xsd:string ;
+      KIMEntity:originalName
+              "restricted"^^xsd:string ;
+      oa:end  "64"^^xsd:nonNegativeInteger ;
+      oa:hasBody traffic:Restricted ;
+      oa:hasTarget :TSTweet1 ;
+      oa:start "53"^^xsd:nonNegativeInteger .
+
+:KIMEntityExtraction
+      rdf:type owl:Class ;
+      rdfs:subClassOf prov:Activity .
+
+:KIMEntityExtraction_1
+      rdf:type :KIMEntityExtraction ;
+      prov:generated :KIMAnnotation_1 ;
+      prov:used :TSTweet1 ;
+      prov:wasAssociatedWith
+              :KIMPlatform .
+
+:KIMEntityExtraction_2
+      rdf:type :KIMEntityExtraction ;
+      prov:generated :KIMAnnotation_2 ;
+      prov:used :TSTweet1 ;
+      prov:wasAssociatedWith
+              :KIMPlatform .
+
+:KIMEntityExtraction_3
+      rdf:type :KIMEntityExtraction ;
+      prov:generated :KIMAnnotation_3 ;
+      prov:used :TSTweet1 ;
+      prov:wasAssociatedWith
+              :KIMPlatform .
+
+:KIMEntityExtraction_4
+      rdf:type :KIMEntityExtraction ;
+      prov:generated :KIMAnnotation_4 ;
+      prov:used :TSTweet1 ;
+      prov:wasAssociatedWith
+              :KIMPlatform .
+
+:KIMEntityExtraction_5
+      rdf:type :KIMEntityExtraction ;
+      prov:generated :KIMAnnotation_5 ;
+      prov:used :TSTweet1 ;
+      prov:wasAssociatedWith
+              :KIMPlatform .
+
+:KIMPlatform
+      rdf:type prov:SoftwareAgent .
+
+:TSTweet1
+      rdf:type prov:Entity , bottari:Tweet ;
+      rdfs:label "TSTweet1"^^xsd:string ;
+      sioc:content "\"M8 J23 - J22 West of M77 - Hazard, Lockerbie 2 lanes restricted Westbound for up to 15 minutes http://tscot.org/01c53539\""^^xsd:string ;
+      sioc:has_creator :TrafficScotlandTwitterUser .
+
+:TSTweet1_in
+      rdf:type traffic:Incident ;
+      traffic:direction traffic:Westbound ;
+      traffic:effect traffic:TwoLanes ;
+      traffic:incidentType
+              traffic:hazard ;
+      prov:wasDerivedFrom :TSTweet1 .
+
+:TSTweet1_in_act
+      rdf:type prov:Activity ;
+      prov:generated :TSTweet1_in ;
+      prov:used :KIMAnnotation_4 .
+
+:TSTweet1_in_effect
+      rdf:type prov:Activity ;
+      prov:generated :TSTweet1_in ;
+      prov:used :KIMAnnotation_2 .
+
+:TSTweet1_in_heading
+      rdf:type prov:Activity ;
+      prov:generated :TSTweet1_in ;
+      prov:used :KIMAnnotation_1 .
+
+:TrafficScotlandTwitterUser
+      rdf:type bottari:TwitterUser ;
+      rdfs:label "Traffic scotland twitter user"^^xsd:string ;
+      sioc:creator_of :TSTweet1 ;
+      bottari:posts :TSTweet1 ;
+      bottari:screenName "trafficscotland"^^xsd:string .

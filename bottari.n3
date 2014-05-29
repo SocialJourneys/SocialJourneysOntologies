@@ -1,0 +1,90 @@
+# Saved by TopBraid on Thu Mar 27 14:16:09 GMT 2014
+# baseURI: http://www.dotrural.ac.uk/irp/uploads/ontologies/bottari
+# imports: http://rdfs.org/sioc/types
+# imports: http://rdfs.org/sioc/ns
+# imports: http://www.w3.org/2003/01/geo/wgs84_pos
+
+@prefix :        <http://www.dotrural.ac.uk/irp/uploads/ontologies/bottari#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.dotrural.ac.uk/irp/uploads/ontologies/bottari>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.w3.org/2003/01/geo/wgs84_pos> , <http://rdfs.org/sioc/types> , <http://rdfs.org/sioc/ns> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+:Ambience
+      rdf:type rdfs:Class ;
+      rdfs:label "Ambience"^^xsd:string .
+
+:NamedPlace
+      rdf:type rdfs:Class ;
+      rdfs:label "Named place"^^xsd:string ;
+      rdfs:subClassOf <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> .
+
+:Tweet
+      rdf:type owl:Class ;
+      rdfs:label "Tweet"^^xsd:string ;
+      owl:equivalentClass <http://rdfs.org/sioc/types#MicroblogPost> .
+
+:TwitterUser
+      rdf:type owl:Class ;
+      rdfs:label "Twitter user"^^xsd:string ;
+      rdfs:subClassOf <http://rdfs.org/sioc/ns#UserAccount> .
+
+:ambience
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "ambience"^^xsd:string .
+
+:message
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "message"^^xsd:string .
+
+:messageTimeStamp
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "message time stamp"^^xsd:string .
+
+:name
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "name"^^xsd:string .
+
+:numberOfNegativeTweets
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "number of negative tweets"^^xsd:string .
+
+:numberOfPositiveTweets
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "number of positive tweets"^^xsd:string .
+
+:numberOfTweets
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "number of tweets"^^xsd:string .
+
+:posts
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "posts"^^xsd:string .
+
+:screenName
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "screen name"^^xsd:string .
+
+:talksAbout
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "talks about"^^xsd:string .
+
+:talksAboutNegatively
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "talks about negatively"^^xsd:string ;
+      rdfs:subPropertyOf :talksAbout .
+
+:talksAboutNeutrally
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "talks about neutrally"^^xsd:string ;
+      rdfs:subPropertyOf :talksAbout .
+
+:talksAboutPositively
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "talks about positively"^^xsd:string ;
+      rdfs:subPropertyOf :talksAbout .

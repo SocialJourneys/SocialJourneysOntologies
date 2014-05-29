@@ -1,0 +1,17 @@
+# Saved by TopBraid on Thu Apr 03 10:38:56 IST 2014
+# baseURI: http://www.dotrural.ac.uk/irp/uploads/ontologies/unnamed1
+# imports: http://spinrdf.org/spin
+
+@prefix :        <http://www.dotrural.ac.uk/irp/uploads/ontologies/unnamed1#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sp:      <http://spinrdf.org/sp#> .
+@prefix spin:    <http://spinrdf.org/spin#> .
+@prefix spl:     <http://spinrdf.org/spl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.dotrural.ac.uk/irp/uploads/ontologies/unnamed1>
+      rdf:type <http://www.w3.org/2002/07/owl#Ontology> ;
+      <http://www.w3.org/2002/07/owl#imports>
+              <http://spinrdf.org/spin> ;
+      <http://www.w3.org/2002/07/owl#versionInfo>
+              "Created with TopBraid Composer"^^xsd:string .

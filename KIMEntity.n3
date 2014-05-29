@@ -1,0 +1,23 @@
+# Saved by TopBraid on Thu Mar 27 14:35:50 GMT 2014
+# baseURI: http://www.dotrural.ac.uk/irp/uploads/ontologies/KIMEntity
+# imports: http://www.w3.org/ns/oa
+
+@prefix :        <http://www.dotrural.ac.uk/irp/uploads/ontologies/KIMEntity#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.dotrural.ac.uk/irp/uploads/ontologies/KIMEntity>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.w3.org/ns/oa> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+:KIMAnnotation
+      rdf:type owl:Class ;
+      rdfs:label "KIMAnnotation"^^xsd:string ;
+      rdfs:subClassOf <http://www.w3.org/ns/oa#Annotation> .
+
+:originalName
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "original name"^^xsd:string .
